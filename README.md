@@ -1,6 +1,6 @@
 # Dataset Report Renderer
 ## A web service application that generates a report consisting of each row of JSON Array structured based on the given template.
-This application will be needing two files, the dataset and template files. 
+This application will be needing two files for the dataset and template. It will throw an error if the dataset or template file is empty, or template file has no template-row tag found.
 
 ## Usage
 To run the project using docker, please run the following commands. 
