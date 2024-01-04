@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ReportRenderer",
+    "\\ReportRenderer\\Controllers",
+    "\\ReportRenderer\\Services",
+    "\\UnitTest"
+  ],
+  "SelectedNode": "\\UnitTest\\Tests.cs",
+  "PreviewInSolutionExplorer": false
+}

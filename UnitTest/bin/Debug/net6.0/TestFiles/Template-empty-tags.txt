@@ -1,0 +1,3 @@
+<template-row>
+  HELLO
+</template-row>
