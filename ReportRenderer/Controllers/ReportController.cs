@@ -32,10 +32,20 @@ namespace ReportRenderer.Controllers
                     return BadRequest("Dataset not found.");
                 }
 
+                if (!dataset.isValidDataset())
+                {
+                    return BadRequest("Dataset must be a .json file");
+                }
+
                 var template = form.Files.FirstOrDefault(e => e.Name == "template");
                 if (template == null)
                 {
                     return BadRequest("Template not found.");
+                }
+
+                if (!template.isValidTemplate())
+                {
+                    return BadRequest("Template must be a .txt file");
                 }
 
                 return Ok(reportService.GenerateFromFile(dataset, template));

@@ -14,21 +14,21 @@ namespace ReportRenderer.Services.ReportService
 
         public string GenerateFromFile(IFormFile dataset, IFormFile templateFile)
         {
-            string jsonDataset = dataset.toJsonString();
+            string datasetContent = dataset.content();
 
-            if (string.IsNullOrEmpty(jsonDataset))
+            if (string.IsNullOrEmpty(datasetContent))
             {
                 throw new Exception("Dataset file is empty.");
             }
 
-            string stringTemplate = templateFile.toJsonString();
-            if (string.IsNullOrEmpty(stringTemplate))
+            string templateContent = templateFile.content();
+            if (string.IsNullOrEmpty(templateContent))
             {
                 throw new Exception("Template file is empty.");
             }
 
             HtmlDocument htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(stringTemplate);
+            htmlDoc.LoadHtml(templateContent);
 
             var templateRow = htmlDoc.DocumentNode.SelectSingleNode(this.TEMPLATE_ROW_TAG)?.InnerHtml;
 
@@ -48,7 +48,7 @@ namespace ReportRenderer.Services.ReportService
                 throw new Exception("No field tags found in the template.");
             }
 
-            DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(jsonDataset);
+            DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(datasetContent);
 
             StringBuilder stringBuilder = new StringBuilder();
 
